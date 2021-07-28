@@ -1,0 +1,54 @@
+{
+    "name": "CodeChef-Notifier",
+    "version": "1.0",
+    "description": "This extension aims to save time by automating the process of fetching the result and informing you as soon as the result is available.",
+    "manifest_version": 2,
+    "permissions": [
+        "storage",
+        "notifications",
+        "https://www.codechef.com/get_submission_status/*",
+        "http://www.codechef.com/get_submission_status/*",
+        "https://www.codechef.com/error_status_table/*",
+        "https://www.codechef.com/error_status_table/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.codechef.com/submit/complete/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "all-frames": true
+        }
+    ],
+    "background": {
+        "scripts": [
+            "jquery.js",
+            "background.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "image/wrong-16.png",
+            "48": "image/wrong-48.png",
+            "128": "image/wrong-128.png"
+        }
+    },
+    "icons": {
+        "16": "image/correctChef-16.png",
+        "48": "image/correctChef-48.png",
+        "128": "image/correctChef-128.png"
+    },
+    "commands": {
+        "clean-all": {
+            "suggested_key": {
+                "default": "Alt+Shift+Delete",
+                "mac": "Alt+Shift+Delete"
+            },
+            "description": "clean all the submission results"
+        }
+    }
+}
